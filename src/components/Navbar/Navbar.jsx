@@ -1,6 +1,6 @@
 import React from 'react';
 import { RiMenu2Fill } from 'react-icons/ri';
-import { Links, NavLink } from 'react-router';
+import { NavLink } from 'react-router';
 import logo from '../../assets/logo.png';
 
 const Navbar = () => {
@@ -20,6 +20,20 @@ const Navbar = () => {
         >
             MyProfile
         </NavLink></li>
+        <li><NavLink to="/auth/login"
+            className={({ isActive }) =>
+                (`${isActive ? "border-b-4" : ""}  border-[#5dba76] rounded-sm px-1.5 hover:bg-gray-300`)
+            }
+        >
+            LogIn
+        </NavLink></li>
+        <li><NavLink to="/auth/register"
+            className={({ isActive }) =>
+                (`${isActive ? "border-b-4" : ""}  border-[#5dba76] rounded-sm px-1.5 hover:bg-gray-300`)
+            }
+        >
+            Register
+        </NavLink></li>
     </>
     return (
         <div className="navbar shadow-2xs">
@@ -31,7 +45,7 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-lg font-medium">
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 py-2 shadow text-lg font-medium">
                             {
                                 links
                             }
@@ -43,14 +57,16 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className=" hidden lg:flex">
-                    <ul className='flex gap-4 text-lg font-medium'>
+                    <ul className='flex gap-1 text-lg font-medium'>
                         {
                             links
                         }
                     </ul>
                 </div>
-                <div className="">
+                <div className=" flex items-center gap-1.5">
+                    <img className='h-10 w-10 rounded-full border-2 ' src={logo} alt="" />
                     <button className='btn btn-active rounded-full py-[20px] px-[25px]  text-xl font-semibold'>Login</button>
+                    <button className='btn btn-active rounded-full py-[20px] px-[25px]  text-xl font-semibold'>Logout</button>
                 </div>
             </div>
         </div>
