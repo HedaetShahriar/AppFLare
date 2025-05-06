@@ -1,15 +1,25 @@
 import React from 'react';
 import Navbar from '../Components/Navbar/Navbar';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { use } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const {signInUser}=use(AuthContext);
     const handleForm = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
-        // Perform login logic here (e.g., API call, authentication, etc.)
+        signInUser(email, password)
+            .then((result) => {
+                const user = result.user;
+                navigate("/");
+            })
+            .catch((error) => {
+                console.error(error.message);
+            });
     }
     return (
         <div>
@@ -21,10 +31,10 @@ const Login = () => {
                     <p className='text-center'>Please login to your account</p>
                     <form onSubmit={handleForm} className='flex flex-col mt-4 gap-2'>
                         <label className="label">Email</label>
-                        <input type="email" className="input w-full" placeholder="Enter your Email" required/>
+                        <input name="email" type="email" className="input w-full focus:outline-none" placeholder="Enter your Email" required/>
 
                         <label className="label">Password</label>
-                        <input type="password" className="input w-full" placeholder="Enter your Password" required/>
+                        <input name="password" type="password" className="input w-full focus:outline-none" placeholder="Enter your Password" required/>
                         <button type='submit' className='btn btn-neutral mt-2' >Login</button>
                     </form>
                     <div className="divider">OR</div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const App = ({app}) => {
-    console.log(app);
+    
     const{id,name,developer,thumbnail,banner,description,downloads,features,rating,reviews,category,trending}=app;
     return (
         <div className='bg-base-200 rounded-lg shadow-lg '>
