@@ -64,7 +64,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className=" flex items-center gap-1.5">
-                    <img className='h-10 w-10 rounded-full border-2 ' src={logo} alt="" />
+                    <img className='h-10 w-10 rounded-full border-2 p-0.5 ' src={logo} alt="" />
                     <button className='btn btn-active rounded-full py-[20px] px-[25px]  text-xl font-semibold'>Login</button>
                     <button className='btn btn-active rounded-full py-[20px] px-[25px]  text-xl font-semibold'>Logout</button>
                 </div>

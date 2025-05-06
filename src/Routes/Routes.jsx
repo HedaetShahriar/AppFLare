@@ -15,7 +15,9 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home></Home>
+                element: <Home></Home>,
+                hydrateFallbackElement:<span className='loader loading-spinner'></span>,
+                loader:()=>fetch("/apps.json"),
             },
             {
                 path:"/Profile",
