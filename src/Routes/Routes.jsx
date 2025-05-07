@@ -7,6 +7,12 @@ import MainLayout from '../layouts/MainLayout';
 import Home from '../Pages/Home';
 import Login from '../Pages/Login';
 import Register from '../Pages/Register';
+import Loading from '../components/Loading/Loading ';
+import PrivateRoute from './PrivateRoute';
+import AppDetails from '../Pages/AppDetails';
+import UserProfile from '../Pages/UserProfile';
+import ForgotPassword from '../Pages/ForgotPassword';
+import Errorpage from '../Pages/Errorpage';
 
 const routes = createBrowserRouter([
     {
@@ -14,15 +20,26 @@ const routes = createBrowserRouter([
         element:<MainLayout></MainLayout>,
         children: [
             {
-                path: "/",
+                index: true,
                 element: <Home></Home>,
-                hydrateFallbackElement:<span className='loader loading-spinner'></span>,
+                hydrateFallbackElement:<Loading></Loading>,
                 loader:()=>fetch("/apps.json"),
             },
             {
                 path:"/Profile",
-                element: <h1>Profile</h1>
+                element: <PrivateRoute>
+                    <UserProfile></UserProfile>
+                </PrivateRoute>,
             },
+            {
+                path:"/Apps/:id",
+                element:<PrivateRoute>
+                    <AppDetails></AppDetails>
+                </PrivateRoute>,
+                hydrateFallbackElement:<Loading></Loading>,
+                loader: () => fetch(`/apps.json`),
+
+            }
         ]
     },
     {
@@ -36,8 +53,15 @@ const routes = createBrowserRouter([
     {
         path:"/auth/Register",
         element: <Register></Register>
+    },
+    {
+        path: "/auth/Login/forgotPassword",
+        element: <ForgotPassword></ForgotPassword>,
+    },
+    {
+        path: "*",
+        element: <Errorpage></Errorpage>,
     }
-
 ])
 
 export default routes;
