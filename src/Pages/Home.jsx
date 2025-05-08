@@ -11,12 +11,13 @@ const Home = () => {
     return (
         <>
             <Banner appsData={appsData}></Banner>
-            <main className='container mx-auto p-1.5'>
+            <div className='container mx-auto p-1.5'>
                 <TrendingApps appsData={appsData}></TrendingApps>
                 <Games appsData={appsData}></Games>
                 <ProductivityApps appsData={appsData}></ProductivityApps>
                 <EducationalApps appsData={appsData}></EducationalApps>
-            </main>
+            </div>
+            {/* why using this store sectio</div>n */}
         </>
     );
 };
