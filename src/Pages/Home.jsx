@@ -10,7 +10,7 @@ const Home = () => {
 
     return (
         <>
-            <Banner></Banner>
+            <Banner appsData={appsData}></Banner>
             <main className='container mx-auto p-1.5'>
                 <TrendingApps appsData={appsData}></TrendingApps>
                 <Games appsData={appsData}></Games>

@@ -20,7 +20,7 @@ const generateGradientColor = () => {
 
 const App = ({ app }) => {
 
-    const { id, name, developer, thumbnail, banner, description, downloads, features, rating, reviews, category, trending } = app;
+    const { id, name, developer, thumbnail, banner, description, downloads, features, rating, reviews, category, isLatest } = app;
     const [bgColor, setBgColor] = useState('#ffffff');
 
     useEffect(() => {
