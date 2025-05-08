@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Register = () => {
-    const {registerUser, setUser, updateUserProfile,googleSignIn} = use(AuthContext);
+    const { registerUser, setUser, updateUserProfile, googleSignIn } = use(AuthContext);
     const handleRegister = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -53,13 +53,20 @@ const Register = () => {
                     <p className='text-center'>Please Register to your account</p>
                     <form onSubmit={handleRegister} className='flex flex-col mt-4 gap-1'>
                         <label className="label">Name</label>
-                        <input name='name' type="text" className="input w-full focus:outline-none" placeholder="Enter your Name" required/>
+                        <input name='name' type="text" className="input w-full focus:outline-none" placeholder="Enter your Name" required />
                         <label className="label">Email</label>
-                        <input name='email' type="email" className="input w-full focus:outline-none" placeholder="Enter your Email" required/>
+                        <input name='email' type="email" className="input validator w-full focus:outline-none" placeholder="Enter your Email" required />
                         <label className="label">photoURL</label>
-                        <input name='photoURL' type="text" className="input w-full focus:outline-none" placeholder="Enter your photoURL" required/>
+                        <input name='photoURL' type="text" className="input w-full focus:outline-none" placeholder="Enter your photoURL" required />
                         <label className="label">Password</label>
-                        <input name='password' type="password" className="input w-full focus:outline-none" placeholder="Enter your Password" required/>
+                        <input name='password' type="password" className="input validator w-full focus:outline-none" required placeholder="Enter your Password" minLength="6"
+                            pattern="(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                            title="Must be at least 6 characters, lowercase letter, uppercase letter" />
+                        <p className="hidden validator-hint">
+                            Must be at least 6 characters, including
+                            <br />At least one lowercase letter
+                            <br />At least one uppercase letter
+                        </p>
                         <button type='submit' className='btn btn-neutral mt-2'>Register</button>
                     </form>
                     <div className="divider">OR</div>
@@ -69,7 +76,7 @@ const Register = () => {
                     </button>
                     <p className='text-center'>Already have an account? <Link to="/auth/login" className='text-[#5dba76] font-semibold'>logIn</Link></p>
                 </div>
-               
+
             </div>
         </div>
     );
