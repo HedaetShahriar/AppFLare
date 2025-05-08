@@ -47,12 +47,24 @@ const AppDetails = () => {
     };
 
     return (
-        <div className="max-w-5xl mx-auto my-12 px-4">
+        <div className="max-w-5xl mx-auto mt-8 mb-12 px-4">
             {/* Banner with thumbnail */}
-            <div className="relative rounded-3xl overflow-hidden shadow-lg">
-                <img src={banner} alt="Banner" className="w-full h-64 object-cover" />
-                <div className="absolute -bottom-10 left-6">
-                    <img src={thumbnail} alt="App Icon" className="w-24 h-24 rounded-2xl shadow-xl border-4 border-white" />
+            <div className="relative rounded-2xl md:rounded-3xl shadow-lg">
+                <div className="aspect-[16/7] w-full overflow-hidden rounded-2xl md:rounded-3xl">
+                    <img
+                        src={banner}
+                        alt="Banner"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+                <div className="absolute -bottom-10 left-6 w-24">
+                    <div className="aspect-square rounded-2xl shadow-xl border-4 border-white overflow-hidden">
+                        <img
+                            src={thumbnail}
+                            alt="App Icon"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
                 </div>
             </div>
 
