@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Register = () => {
-    const {registerUser, setUser, updateUserProfile} = use(AuthContext);
+    const {registerUser, setUser, updateUserProfile,googleSignIn} = use(AuthContext);
     const handleRegister = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -12,7 +12,7 @@ const Register = () => {
         const email = form.email.value;
         const photoURL = form.photoURL.value;
         const password = form.password.value;
-        console.log(name, email, photoURL, password);
+        // console.log(name, email, photoURL, password);
         registerUser(email, password)
             .then((result) => {
                 const user = result.user;
@@ -31,7 +31,14 @@ const Register = () => {
 
     }
     const handleGoogleSignIn = () => {
-        
+        googleSignIn()
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+            })
+            .catch((error) => {
+                console.error("Google sign-in error", error.message);
+            });
     }
 
 

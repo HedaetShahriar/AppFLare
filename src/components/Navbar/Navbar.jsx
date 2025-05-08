@@ -8,7 +8,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 const Navbar = () => {
     const { user, logOut } = use(AuthContext);
     const navigate = useNavigate();
-    console.log(user);
+    // console.log(user);
     const links = <>
         <li><NavLink
             to="/"
@@ -44,7 +44,7 @@ const Navbar = () => {
         logOut()
             .then(() => {
                 // Sign-out successful.
-               navigate("/");
+                navigate("/");
             })
             .catch((error) => {
                 // An error happened.       
@@ -88,7 +88,7 @@ const Navbar = () => {
                     {
                         user ? (
                             <>
-                                {user.photoURL ? (<img title={user.displayName} onClick={()=>navigate('/Profile')} className='w-10 h-10 rounded-full p-0.5 border-1 hover:cursor-pointer border-gray-400' src={user.photoURL} alt={user.displayName || "User"} />) : (<img className="w-10 h-10 rounded-full p-0.5 border-1 hover:cursor-pointer border-gray-400" src={logo} alt="User" />)}
+                                {user.photoURL ? (<img title={user.displayName} onClick={() => navigate('/Profile')} className='w-10 h-10 rounded-full p-0.5 border-1 hover:cursor-pointer border-gray-400' src={user.photoURL} alt="User" />) : (<img className="w-10 h-10 rounded-full p-0.5 border-1 hover:cursor-pointer border-gray-400" src={logo} alt="User" />)}
                                 <button onClick={handleLogOut} className='btn btn-active rounded-full py-[20px] px-[25px] text-xl font-semibold'>Logout</button>
                             </>
                         ) : (
