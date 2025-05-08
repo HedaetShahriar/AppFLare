@@ -5,6 +5,7 @@ import { AuthContext } from '../provider/AuthProvider';
 
 const Register = () => {
     const { registerUser, setUser, updateUserProfile, googleSignIn } = use(AuthContext);
+    
     const handleRegister = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -56,6 +57,7 @@ const Register = () => {
                         <input name='name' type="text" className="input w-full focus:outline-none" placeholder="Enter your Name" required />
                         <label className="label">Email</label>
                         <input name='email' type="email" className="input validator w-full focus:outline-none" placeholder="Enter your Email" required />
+                        <p className="hidden validator-hint">Enter valid email address</p>
                         <label className="label">photoURL</label>
                         <input name='photoURL' type="text" className="input w-full focus:outline-none" placeholder="Enter your photoURL" required />
                         <label className="label">Password</label>
