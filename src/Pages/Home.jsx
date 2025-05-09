@@ -5,6 +5,7 @@ import Games from '../components/Apps/Games';
 import EducationalApps from '../components/Apps/EducationalApps';
 import ProductivityApps from '../components/Apps/ProductivityApps';
 import React, { Suspense } from 'react';
+import Services from '../components/Services';
 
 
 
@@ -21,7 +22,9 @@ const Home = () => {
                 <EducationalApps appsData={appsData}></EducationalApps>
             </div>
             {/* why using this store section */}
+            <Services></Services>
         </>
+        
     );
 };
 
