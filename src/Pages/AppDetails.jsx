@@ -8,6 +8,24 @@ const AppDetails = () => {
     const [userReviews, setUserReviews] = useState([]);
     const [newReview, setNewReview] = useState('');
     const [newRating, setNewRating] = useState('');
+    const [isInstalled, setIsInstalled] = useState(false);
+    const [installing, setInstalling] = useState(false);
+    const [operation, setOperation] = useState('');
+    const handleInstall = () => {
+        if (installing) return;
+
+        const nextOperation = isInstalled ? 'uninstall' : 'install';
+        setOperation(nextOperation);
+        setInstalling(true);
+
+        setTimeout(() => {
+            setInstalling(false);
+            setIsInstalled(!isInstalled);
+            if (!isInstalled) {
+                setHasInstalledOnce(true);
+            }
+        }, 1000); // Simulate delay
+    };
 
     useEffect(() => {
         const appDetails = appsData.find(app => app.id === id);
@@ -74,13 +92,22 @@ const AppDetails = () => {
                     <h1 className="text-4xl font-bold">{name}</h1>
                     <p className="text-gray-500 text-lg mt-1">by {developer}</p>
                 </div>
-                <button className="mt-6 md:mt-0 px-8 py-3 bg-blue-600 text-white rounded-xl text-lg shadow-md hover:bg-blue-700 transition">
-                    Install
+                <button
+                    onClick={handleInstall}
+                    className="mt-6 md:mt-0 px-8 py-3 bg-blue-600 text-white rounded-xl text-lg shadow-md hover:bg-blue-700 transition"
+                >
+                    {installing
+                        ? operation === 'install'
+                            ? 'Installing...'
+                            : 'Uninstalling...'
+                        : isInstalled
+                            ? 'Uninstall'
+                            : 'Install'}
                 </button>
             </div>
 
             {/* Stats */}
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-gray-700">
+            <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-4 text-center text-gray-700">
                 <div className="bg-gray-50 p-4 rounded-xl shadow-sm">
                     <p className="text-sm text-gray-500">Downloads</p>
                     <p className="text-lg font-medium">{downloads}</p>
@@ -105,7 +132,7 @@ const AppDetails = () => {
             {features?.length > 0 && (
                 <div className="mt-10">
                     <h2 className="text-2xl font-semibold mb-4">Key Features</h2>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-800">
+                    <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-gray-800">
                         {features.map((feature, index) => (
                             <li key={index} className="bg-gray-100 p-3 rounded-lg shadow-sm">{feature}</li>
                         ))}
@@ -119,10 +146,10 @@ const AppDetails = () => {
                 <div className="space-y-4">
                     {[...userReviews, ...reviews].map((review, index) => (
                         <div key={index} className="bg-white p-4 rounded-xl shadow border border-gray-100">
-                            <p className="text-gray-800 mb-2">{review.comment}</p>
                             <div className="text-yellow-500">
                                 {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
                             </div>
+                            <p className="text-gray-800 mb-2">{review.comment}</p>
                         </div>
                     ))}
                 </div>

@@ -4,6 +4,9 @@ import TrendingApps from '../components/Apps/TrendingApps';
 import Games from '../components/Apps/Games';
 import EducationalApps from '../components/Apps/EducationalApps';
 import ProductivityApps from '../components/Apps/ProductivityApps';
+import React, { Suspense } from 'react';
+
+
 
 const Home = () => {
     const appsData = useLoaderData();
@@ -17,7 +20,7 @@ const Home = () => {
                 <ProductivityApps appsData={appsData}></ProductivityApps>
                 <EducationalApps appsData={appsData}></EducationalApps>
             </div>
-            {/* why using this store sectio</div>n */}
+            {/* why using this store section */}
         </>
     );
 };

@@ -45,7 +45,7 @@ const Login = () => {
                         <input name="email" type="email" className="input w-full focus:outline-none" placeholder="Enter your Email" required/>
 
                         <label className="label">Password</label>
-                        <input name="password" type="password" className="input w-full focus:outline-none" placeholder="Enter your Password" required/>
+                        <input name="password" autoComplete='current-password' type="password" className="input w-full focus:outline-none" placeholder="Enter your Password" required/>
                         <Link to="/auth/Login/forgotPassword" className='text-[#171a18] font-semibold'>Forgot Password?</Link>
                         <button type='submit' className='btn btn-neutral mt-2' >Login</button>
                     </form>

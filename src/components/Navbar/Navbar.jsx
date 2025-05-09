@@ -25,20 +25,24 @@ const Navbar = () => {
         >
             MyProfile
         </NavLink></li>
-        <li><NavLink to="/auth/login"
-            className={({ isActive }) =>
-                (`${isActive ? "border-b-4" : ""}  border-[#5dba76] rounded-sm px-1.5 hover:bg-gray-300`)
-            }
-        >
-            LogIn
-        </NavLink></li>
-        <li><NavLink to="/auth/register"
-            className={({ isActive }) =>
-                (`${isActive ? "border-b-4" : ""}  border-[#5dba76] rounded-sm px-1.5 hover:bg-gray-300`)
-            }
-        >
-            Register
-        </NavLink></li>
+        {!user && (
+            <>
+                <li><NavLink to="/auth/login"
+                    className={({ isActive }) =>
+                        (`${isActive ? "border-b-4" : ""}  border-[#5dba76] rounded-sm px-1.5 hover:bg-gray-300`)
+                    }
+                >
+                    LogIn
+                </NavLink></li>
+                <li><NavLink to="/auth/register"
+                    className={({ isActive }) =>
+                        (`${isActive ? "border-b-4" : ""}  border-[#5dba76] rounded-sm px-1.5 hover:bg-gray-300`)
+                    }
+                >
+                    Register
+                </NavLink></li>
+            </>
+        )}
     </>;
     const handleLogOut = () => {
         logOut()
