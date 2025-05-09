@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router';
 import logo from '../../assets/logo.png';
 import { use } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
+import userIcon from '../../assets/userIcon.png';
 
 const Navbar = () => {
     const { user, logOut } = use(AuthContext);
@@ -92,7 +93,7 @@ const Navbar = () => {
                     {
                         user ? (
                             <>
-                                {user.photoURL ? (<img title={user.displayName} onClick={() => navigate('/Profile')} className='w-10 h-10 rounded-full p-0.5 border-1 hover:cursor-pointer border-gray-400' src={user.photoURL} alt="User" />) : (<img className="w-10 h-10 rounded-full p-0.5 border-1 hover:cursor-pointer border-gray-400" src={logo} alt="User" />)}
+                                {user.photoURL ? (<img title={user.displayName} onClick={() => navigate('/Profile')} className='w-10 h-10 rounded-full p-0.5 border-1 hover:cursor-pointer border-gray-400' src={user.photoURL} alt={userIcon} />) : (<img className="w-10 h-10 rounded-full p-0.5 border-1 hover:cursor-pointer border-gray-400" src={userIcon} alt="User" />)}
                                 <button onClick={handleLogOut} className='btn btn-active rounded-full py-[20px] px-[25px] text-xl font-semibold'>Logout</button>
                             </>
                         ) : (

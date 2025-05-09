@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { updateProfile } from 'firebase/auth';
 import { AuthContext } from '../provider/AuthProvider';
 import { FaEdit } from 'react-icons/fa';
+import userIcon from '../assets/userIcon.png';
 
 const MyProfile = () => {
-    const { user } = useContext(AuthContext);
+    const { user,updateUserProfile } = useContext(AuthContext);
     const [name, setName] = useState(user?.displayName || '');
     const [photoURL, setPhotoURL] = useState(user?.photoURL || '');
     const [success, setSuccess] = useState('');
@@ -17,10 +17,7 @@ const MyProfile = () => {
         setSuccess('');
 
         try {
-            await updateProfile(user, {
-                displayName: name,
-                photoURL: photoURL,
-            });
+            updateUserProfile(name,photoURL);
             setSuccess('✓ Profile updated');
             setTimeout(() => setSuccess(''), 3000);
             setIsEditing(false);
@@ -39,7 +36,7 @@ const MyProfile = () => {
             <div className="flex justify-center mb-6">
                 <div className="avatar">
                     <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
-                        <img src="/logo.png" />
+                        <img src={photoURL? photoURL: userIcon} />
                     </div>
                 </div>
             </div>
