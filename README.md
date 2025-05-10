@@ -65,6 +65,60 @@ npm run build
 
 ---
 
+## 🔐 Firebase Configuration
+
+To connect this project with your own Firebase backend, follow these steps:
+
+### 1. Create a Firebase Project
+
+- Go to [Firebase Console](https://console.firebase.google.com/)
+- Create a new project
+- Navigate to **Project Settings > General**
+- Under **Your Apps**, register a new web app
+- Copy the Firebase config
+
+### 2. Create a `.env` file in the root directory
+
+```bash
+touch .env
+```
+
+Paste your Firebase config like this:
+
+```env
+VITE_API_KEY=your_api_key
+VITE_AUTH_DOMAIN=your_auth_domain
+VITE_PROJECT_ID=your_project_id
+VITE_STORAGE_BUCKET=your_storage_bucket
+VITE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_APP_ID=your_app_id
+```
+
+> ⚠️ All keys must be prefixed with `VITE_` for Vite to expose them to the app.
+
+### 3. Update `firebase.config.js`
+
+```js
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
+};
+
+export default firebaseConfig;
+```
+
+### 4. Git Ignore your secrets
+
+```gitignore
+.env
+```
+
+---
+
 ## 📁 Folder Structure (Overview)
 
 ```
