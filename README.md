@@ -39,7 +39,7 @@
 ### 1. Clone the project
 
 ```bash
-git clone https://github.com/yourusername/appflare.git
+git clone https://github.com/HedaetShahriar/AppFLare.git
 cd appflare
 ```
 
