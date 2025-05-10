@@ -41,16 +41,19 @@
 ```bash
 git clone https://github.com/programming-hero-web-course1/b11a9-react-authentication-HedaetShahriar
 cd appflare
+\`\`\`
 
 ### 2. Install dependencies
 
 ```bash
 npm install
+\`\`\`
 
 ### 3. Run the development server
 
 ```bash
 npm run dev
+\`\`\`
 
 ---
 
@@ -58,12 +61,13 @@ npm run dev
 
 ```bash
 npm run build
+\`\`\`
 
 ---
 
 ## 📁 Folder Structure (Overview)
 
-```
+\`\`\`
 src/
 ├── assets/              # Static images and icons
 ├── components/          # Reusable components like Navbar, Footer
@@ -72,7 +76,7 @@ src/
 ├── routes/              # Application routing
 ├── styles/              # Custom CSS or Tailwind extensions
 └── main.jsx             # App entry point
-```
+\`\`\`
 
 ---
 
