@@ -10,8 +10,8 @@ const Services = () => {
     return (
         <div className='container mx-auto pb-10 md:pb-16'>
             <div className='text-center mb-8'>
-                <h1 className='text-3xl font-extrabold md:text-4xl mb-4'>Best App Store Experience</h1>
-                <h4 className='text-lg'>Our platform offers a seamless app store experience with a wide range of verified, high-quality applications for all your needs.</h4>
+                <h1 className='text-3xl font-extrabold md:text-4xl text-slate-700 mb-4'>Best App Store Experience</h1>
+                <h4 className='text-lg text-slate-700'>Our platform offers a seamless app store experience with a wide range of verified, high-quality applications for all your needs.</h4>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6'>
                 <div className='bg-purple-100 py-6 px-8 rounded-2xl'>

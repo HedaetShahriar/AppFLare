@@ -1,10 +1,10 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 const BannerSlider = lazy(() => import('./BannerSlider'));
 
 const Banner = ({ appsData }) => {
 
     return (
-        <div className="text-center bg-green-100 py-12 text-slate-700 p-1.5">
+        <div className="text-center bg-green-50 py-12 text-slate-700 p-1.5">
             <h1 className="text-4xl font-bold mb-6 drop-shadow-lg">Welcome to AppFlare</h1>
             <p className="text-lg mb-8 max-w-2xl mx-auto drop-shadow-md">
                 Discover the best apps in our store. Your one-stop destination for all your app needs!

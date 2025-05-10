@@ -13,6 +13,7 @@ import AppDetails from '../Pages/AppDetails';
 import UserProfile from '../Pages/UserProfile';
 import ForgotPassword from '../Pages/ForgotPassword';
 import Errorpage from '../Pages/Errorpage';
+import About from '../Pages/About';
 
 const routes = createBrowserRouter([
     {
@@ -39,12 +40,12 @@ const routes = createBrowserRouter([
                 hydrateFallbackElement:<Loading></Loading>,
                 loader: () => fetch(`/apps.json`),
 
-            }
+            },
+            {
+                path: "/about",
+                element: <About></About>,
+            },
         ]
-    },
-    {
-        path: "/about",
-        element: <h1>About</h1>
     },
     {
         path:"/auth/Login",

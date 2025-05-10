@@ -7,8 +7,6 @@ const ForgotPassword = () => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
-        // const user = { email, password };
-        // console.log(user);
     }
     return (
         <div>
