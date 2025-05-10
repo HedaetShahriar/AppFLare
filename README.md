@@ -4,7 +4,7 @@
 
 ---
 
-**Live Link:** https://appflare-24094.web.app/
+**🔗 Live Link:** [https://appflare-24094.web.app/](https://appflare-24094.web.app/)
 
 ---
 
@@ -38,36 +38,36 @@
 
 ### 1. Clone the project
 
-\`\`\`bash
+```bash
 git clone https://github.com/yourusername/appflare.git
 cd appflare
-\`\`\`
+```
 
 ### 2. Install dependencies
 
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
 ### 3. Run the development server
 
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 ---
 
 ## 📦 Build for production
 
-\`\`\`bash
+```bash
 npm run build
-\`\`\`
+```
 
 ---
 
 ## 📁 Folder Structure (Overview)
 
-\`\`\`
+```
 src/
 ├── assets/              # Static images and icons
 ├── components/          # Reusable components like Navbar, Footer
@@ -76,7 +76,7 @@ src/
 ├── routes/              # Application routing
 ├── styles/              # Custom CSS or Tailwind extensions
 └── main.jsx             # App entry point
-\`\`\`
+```
 
 ---
 
@@ -91,15 +91,15 @@ src/
 
 ## 📚 Useful Links
 
-| Tool | Link |
-|------|------|
-| Vite | https://vite.dev/guide/ |
-| React Router | https://reactrouter.com/start/data/installation |
-| TailwindCSS | https://tailwindcss.com/docs/installation/using-vite |
-| DaisyUI | https://daisyui.com/docs/install/ |
-| SweetAlert2 | https://sweetalert2.github.io/#download |
-| React Icons | https://www.npmjs.com/package/react-icons |
-| Embla Carousel | https://www.embla-carousel.com/get-started/react/ |
+| Tool           | Link                                                                 |
+|----------------|----------------------------------------------------------------------|
+| Vite           | https://vite.dev/guide/                                              |
+| React Router   | https://reactrouter.com/start/data/installation                      |
+| TailwindCSS    | https://tailwindcss.com/docs/installation/using-vite                 |
+| DaisyUI        | https://daisyui.com/docs/install/                                    |
+| SweetAlert2    | https://sweetalert2.github.io/#download                              |
+| React Icons    | https://www.npmjs.com/package/react-icons                            |
+| Embla Carousel | https://www.embla-carousel.com/get-started/react/                    |
 
 ---
 
