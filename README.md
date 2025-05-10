@@ -38,20 +38,20 @@
 
 ### 1. Clone the project
 
-```bash
-git clone https://github.com/programming-hero-web-course1/b11a9-react-authentication-HedaetShahriar
+\`\`\`bash
+git clone https://github.com/yourusername/appflare.git
 cd appflare
 \`\`\`
 
 ### 2. Install dependencies
 
-```bash
+\`\`\`bash
 npm install
 \`\`\`
 
 ### 3. Run the development server
 
-```bash
+\`\`\`bash
 npm run dev
 \`\`\`
 
@@ -59,7 +59,7 @@ npm run dev
 
 ## 📦 Build for production
 
-```bash
+\`\`\`bash
 npm run build
 \`\`\`
 
