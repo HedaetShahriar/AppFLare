@@ -62,7 +62,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar shadow-2xs">
+        <div className="navbar bg-white shadow-2xs">
             <div className='container flex justify-between mx-auto items-center py-3 '>
                 <div className="flex items-center justify-center gap-1.5">
                     <div className="dropdown">
@@ -78,8 +78,8 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className='flex items-center gap-1'>
-                        <img className='w-10 h-10 hidden mt-2 lg:block' src={logo} alt="" />
-                        <h1 className='font-bold text-3xl'>AppFLare</h1>
+                        <img className='w-10 h-10 mt-2' src={logo} alt="" />
+                        <h1 className='font-bold hidden lg:block text-3xl'>AppFLare</h1>
                     </div>
                 </div>
                 <div className=" hidden lg:flex">
@@ -94,10 +94,10 @@ const Navbar = () => {
                         user ? (
                             <>
                                 {user.photoURL ? (<img title={user.displayName} onClick={() => navigate('/Profile')} className='w-10 h-10 rounded-full p-0.5 border-1 hover:cursor-pointer border-gray-400' src={user.photoURL} alt={userIcon} />) : (<img className="w-10 h-10 rounded-full p-0.5 border-1 hover:cursor-pointer border-gray-400" src={userIcon} alt="User" />)}
-                                <button onClick={handleLogOut} className='btn btn-active rounded-full py-[20px] px-[25px] text-xl font-semibold'>Logout</button>
+                                <button onClick={handleLogOut} className='btn btn-secondary btn-outline rounded-full py-[20px] px-[25px] text-xl font-semibold'>Logout</button>
                             </>
                         ) : (
-                            <button onClick={handleLogin} className='btn btn-active rounded-full py-[20px] px-[25px] text-xl font-semibold'>Login</button>
+                            <button onClick={handleLogin} className='btn btn-secondary btn-outline  rounded-full py-[20px] px-[25px] text-xl font-semibold'>Login</button>
                         )
                     }
                 </div>

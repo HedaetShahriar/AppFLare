@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { showSuccessAlert, showWarningAlert } from '../utilities/alert';
+import SubmitReview from '../components/submitReview';
 
 const AppDetails = () => {
     const { id } = useParams();
@@ -10,6 +12,7 @@ const AppDetails = () => {
     const [newRating, setNewRating] = useState('');
     const [isInstalled, setIsInstalled] = useState(false);
     const [installing, setInstalling] = useState(false);
+    const [hasInstalledOnce, setHasInstalledOnce] = useState(false);
     const [operation, setOperation] = useState('');
     const handleInstall = () => {
         if (installing) return;
@@ -50,7 +53,7 @@ const AppDetails = () => {
     const handleSubmitReview = () => {
         const ratingValue = parseInt(newRating);
         if (!newReview.trim() || isNaN(ratingValue) || ratingValue < 1 || ratingValue > 5) {
-            alert("Please enter a valid review and rating between 1 and 5.");
+            showWarningAlert("Please provide a valid review and rating.");
             return;
         }
 
@@ -62,6 +65,9 @@ const AppDetails = () => {
         setUserReviews([newEntry, ...userReviews]);
         setNewReview('');
         setNewRating('');
+        setTimeout(() => {
+            showSuccessAlert("Thanks for your feedback!");
+        }, 1000); // Simulate delay
     };
 
     return (
@@ -156,33 +162,14 @@ const AppDetails = () => {
             </div>
 
             {/* Submit Review Section */}
-            <div className="mt-12 bg-gray-50 p-6 rounded-xl shadow-md">
-                <h2 className="text-2xl font-semibold mb-4">Submit a Review</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <textarea
-                        value={newReview}
-                        onChange={(e) => setNewReview(e.target.value)}
-                        placeholder="Write your review..."
-                        className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        rows={4}
-                    />
-                    <input
-                        type="number"
-                        value={newRating}
-                        onChange={(e) => setNewRating(e.target.value)}
-                        placeholder="Rating (1 to 5)"
-                        min="1"
-                        max="5"
-                        className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    />
-                </div>
-                <button
-                    onClick={handleSubmitReview}
-                    className="mt-4 px-6 py-3 bg-green-600 text-white rounded-xl shadow hover:bg-green-700 transition"
-                >
-                    Submit Review
-                </button>
-            </div>
+            <SubmitReview
+                newReview={newReview}
+                setNewReview={setNewReview}
+                newRating={newRating}
+                setNewRating={setNewRating}
+                handleSubmitReview={handleSubmitReview}
+                hasInstalledOnce={hasInstalledOnce}
+            />
         </div>
     );
 };

@@ -7,8 +7,7 @@ const ForgotPassword = () => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
-        const password = form.password.value;
-        const user = { email, password };
+        // const user = { email, password };
         // console.log(user);
     }
     return (
@@ -21,9 +20,6 @@ const ForgotPassword = () => {
                     <form onSubmit={handleForm} className='flex flex-col mt-4 gap-2'>
                         <label className="label">Email</label>
                         <input name="email" type="email" className="input w-full focus:outline-none" placeholder="Enter your Email" required/>
-
-                        <label className="label">New Password</label>
-                        <input name="password" type="password" className="input w-full focus:outline-none" placeholder="Enter your new Password" required/>
                         <button type='submit' className='btn btn-neutral mt-2' >Reset</button>
                     </form>
                     

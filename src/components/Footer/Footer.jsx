@@ -4,7 +4,7 @@ import { FaLinkedin } from 'react-icons/fa6';
 
 const Footer = () => {
     return (
-        <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
+        <footer className="footer bg-[#1a1919] text-xl text-neutral-content footer-horizontal footer-center rounded p-10">
             <nav className="grid grid-flow-col gap-4">
                 <a className="link link-hover">Terms Of Service</a>
                 <a className="link link-hover">Privacy Policy</a>

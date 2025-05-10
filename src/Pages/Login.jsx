@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../Components/Navbar/Navbar';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { use } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
+import { showAlert } from '../utilities/alert';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const {signInUser,googleSignIn,setUser}=use(AuthContext);
+    const { signInUser, googleSignIn, setUser } = use(AuthContext);
     // console.log(location);
     const handleForm = (e) => {
         e.preventDefault();
@@ -17,10 +19,13 @@ const Login = () => {
         signInUser(email, password)
             .then((result) => {
                 const user = result.user;
-                navigate(`${location.state? location.state : '/'}`);
+                setUser(user);
+                showAlert('Welcome back!', user.displayName);
+                navigate(`${location.state ? location.state : '/'}`);
             })
             .catch((error) => {
                 console.error(error.message);
+                showAlert('Login failed', error.message, 'error');
             });
     }
     const handleGoogleLogin = () => {
@@ -28,9 +33,13 @@ const Login = () => {
             const user = result.user;
             setUser(user);
         })
-        .catch((error) => {
-            console.error(error.message);
-        })
+            .catch((error) => {
+                console.error(error.message);
+            })
+    }
+    const [isShowPassword, setIsShowPassword] = useState(false);
+    const handleShowPassword = () => {
+        setIsShowPassword(!isShowPassword);
     }
     return (
         <div>
@@ -42,10 +51,13 @@ const Login = () => {
                     <p className='text-center'>Please login to your account</p>
                     <form onSubmit={handleForm} className='flex flex-col mt-4 gap-2'>
                         <label className="label">Email</label>
-                        <input name="email" type="email" className="input w-full focus:outline-none" placeholder="Enter your Email" required/>
+                        <input name="email" type="email" className="input w-full focus:outline-none" placeholder="Enter your Email" required />
 
                         <label className="label">Password</label>
-                        <input name="password" autoComplete='current-password' type="password" className="input w-full focus:outline-none" placeholder="Enter your Password" required/>
+                        <div className='relative'>
+                            <input name="password" autoComplete='current-password' type={!isShowPassword?'password':'text'} className="input w-full focus:outline-none" placeholder="Enter your Password" required />
+                            <button type='button' onClick={handleShowPassword} className='absolute right-2 top-2.5 z-10 text-gray-400'>{!isShowPassword?<BsEye size={22}/>:<BsEyeSlash size={22}/>}</button>
+                        </div>
                         <Link to="/auth/Login/forgotPassword" className='text-[#171a18] font-semibold'>Forgot Password?</Link>
                         <button type='submit' className='btn btn-neutral mt-2' >Login</button>
                     </form>

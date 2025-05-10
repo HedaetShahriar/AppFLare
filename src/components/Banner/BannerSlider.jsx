@@ -4,7 +4,12 @@ import { Link } from 'react-router';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-const BannerSlider = ({ latestApps }) => {
+const BannerSlider = ({ appsData }) => {
+    const [latestApps, setLatestApps] = useState([]);
+    useEffect(() => {
+        const tApps = appsData.filter((app) => app.isLatest === true);
+        setLatestApps(tApps);
+    }, [appsData]);
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -14,7 +19,13 @@ const BannerSlider = ({ latestApps }) => {
             containScroll: 'trimSnaps',
             slidesToScroll: 1,
         },
-        [Autoplay({ delay: 3000, stopOnInteraction: false })]
+        [
+            Autoplay({
+                delay: 3000,
+                stopOnInteraction: false,
+                stopOnMouseEnter: true, // optional
+            }),
+        ]
     );
 
     const onSelect = useCallback(() => {
@@ -42,11 +53,8 @@ const BannerSlider = ({ latestApps }) => {
                             className="flex-[0_0_90%] md:flex-[0_0_31.5%] -px-4"
                         >
                             <div
-                                className={`transition-transform duration-500 ease-in-out ${
-                                    index === selectedIndex
-                                        ? 'scale-100'
-                                        : 'scale-80 opacity-80'
-                                }`}
+                                className={`transition-transform duration-500 ease-in-out ${index === selectedIndex ? 'scale-100' : 'scale-80 opacity-80'
+                                    }`}
                             >
                                 <Link
                                     to={`/apps/${app.id}`}
@@ -73,11 +81,10 @@ const BannerSlider = ({ latestApps }) => {
                     <button
                         key={index}
                         onClick={() => scrollTo(index)}
-                        className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                            index === selectedIndex
+                        className={`w-2 h-2 rounded-full transition-colors duration-300 ${index === selectedIndex
                                 ? 'bg-primary scale-125'
                                 : 'bg-gray-400 hover:bg-gray-500'
-                        }`}
+                            }`}
                     />
                 ))}
             </div>
