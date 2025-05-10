@@ -8,7 +8,6 @@
 
 ---
 
-##Live Link
 ## 🛠 Tech Stack
 
 - ⚡ [Vite](https://vite.dev/guide/) — Lightning-fast build tool for development
